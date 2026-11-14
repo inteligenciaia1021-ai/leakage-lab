@@ -74,4 +74,4 @@ site/                 página (HTML, CSS, JavaScript)
 
 ## Autor
 
-Artur Gomes · [LinkedIn](www.linkedin.com/in/artur-gomes-a2712a229)
+Artur Gomes · [www.linkedin.com/in/artur-gomes-a2712a229]
