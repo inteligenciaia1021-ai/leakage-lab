@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leakage Lab: quando o modelo parece bom demais</title>
+  <meta name="description" content="Experimento interativo sobre vazamento de dados em machine learning.">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <header class="topo">
+    <p class="etiqueta">Machine learning · Python · JavaScript</p>
+    <h1>Quando o modelo parece bom demais</h1>
+    <p class="subtitulo">
+      Um experimento que mostra como um modelo pode parecer acertar muito
+      sem ter aprendido nada.
+    </p>
+    <a class="botao" href="#resultados">Ver resultados</a>
+  </header>
+
+  <main>
+
+    <section id="conceito">
+      <h2>O que é vazamento de dados?</h2>
+      <p>
+        Vazamento acontece quando informação do conjunto de teste influencia
+        o treino do modelo. A prova deixa de ser uma prova, e a nota fica
+        inflada.
+      </p>
+      <p>
+        Aqui, os dados são puro ruído: não existe padrão nenhum para aprender.
+        Um modelo honesto deveria ficar perto de 50% de acerto.
+      </p>
+    </section>
+
+    <section id="resultados">
+      <h2>Resultados</h2>
+
+      <div class="cartoes">
+        <article class="cartao">
+          <p class="cartao-titulo">Com vazamento</p>
+          <p class="cartao-valor" id="valor-errado">—</p>
+        </article>
+        <article class="cartao">
+          <p class="cartao-titulo">Sem vazamento</p>
+          <p class="cartao-valor" id="valor-certo">—</p>
+        </article>
+        <article class="cartao">
+          <p class="cartao-titulo">Diferença</p>
+          <p class="cartao-valor" id="valor-diferenca">—</p>
+        </article>
+      </div>
+
+      <figure>
+        <div id="grafico" role="img"
+             aria-label="Comparação entre acurácia com e sem vazamento de dados"></div>
+        <figcaption>Cada ponto é uma repetição do experimento (50 no total). A linha clara marca a média.</figcaption>
+      </figure>
+    </section>
+
+    <section id="como-funciona">
+      <h2>Como funciona</h2>
+      <ol>
+        <li>Um script em Python sorteia dados sem padrão e treina o modelo.</li>
+        <li>O experimento roda duas vezes: do jeito errado e do jeito certo.</li>
+        <li>Os resultados vão para um arquivo JSON que esta página lê e desenha.</li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      Feito por Artur Gomes ·
+      <a href="#">Código no GitHub</a> ·
+      <a href="#">LinkedIn</a>
+    </p>
+  </footer>
+
+</body>
+</html>

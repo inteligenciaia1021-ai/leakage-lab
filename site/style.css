@@ -1,0 +1,144 @@
+:root {
+  --fundo: #0F172A;
+  --superficie: #1E293B;
+  --borda: #334155;
+  --texto: #F8FAFC;
+  --texto-suave: #94A3B8;
+  --destaque: #38BDF8;
+  --ruim: #F87171;
+  --bom: #4ADE80;
+  --raio: 12px;
+  --fonte: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte);
+  line-height: 1.6;
+}
+
+.topo {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 96px 24px 48px;
+}
+
+.etiqueta {
+  margin: 0 0 16px;
+  color: var(--destaque);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.subtitulo {
+  margin: 0 0 32px;
+  color: var(--texto-suave);
+  font-size: 1.15rem;
+}
+
+.botao {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: var(--destaque);
+  color: var(--fundo);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.botao:hover { opacity: 0.9; transform: translateY(-1px); }
+
+a { color: var(--destaque); }
+a:focus-visible { outline: 3px solid var(--destaque); outline-offset: 3px; }
+
+main, footer {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+section {
+  padding: 48px 0;
+  border-top: 1px solid var(--borda);
+}
+
+h2 { margin: 0 0 16px; font-size: 1.6rem; }
+
+p { margin: 0 0 16px; color: #CBD5E1; }
+
+.cartoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 24px 0 32px;
+}
+
+.cartao {
+  padding: 20px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+}
+
+.cartao-titulo {
+  margin: 0 0 8px;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+.cartao-valor {
+  margin: 0;
+  color: var(--texto);
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+figure {
+  margin: 0;
+  padding: 20px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+}
+
+#grafico { min-height: 280px; }
+
+figcaption {
+  margin-top: 12px;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+ol { padding-left: 1.25rem; color: #CBD5E1; }
+li { margin-bottom: 8px; }
+
+footer {
+  padding: 0 24px 64px;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--borda);
+  color: inherit;
+}
