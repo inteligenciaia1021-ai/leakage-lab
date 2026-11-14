@@ -6,7 +6,7 @@ Experimento sobre **vazamento de dados** em machine learning: com dados sem
 padrão nenhum, o procedimento errado leva um modelo a ~88% de acerto; o
 correto fica perto de 50%.
 
-**Página com os resultados:** (cole aqui o link do GitHub Pages)
+**Página com os resultados:** ([(https://inteligenciaia1021-ai.github.io/leakage-lab/)])
 
 ## A pergunta
 
