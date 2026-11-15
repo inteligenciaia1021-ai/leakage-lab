@@ -6,7 +6,8 @@ Experimento sobre **vazamento de dados** em machine learning: com dados sem
 padrão nenhum, o procedimento errado leva um modelo a ~88% de acerto; o
 correto fica perto de 50%.
 
-**Página com os resultados:** (https://inteligenciaia1021-ai.github.io/leakage-lab/)
+- **Página com os resultados:** https://inteligenciaia1021-ai.github.io/leakage-lab/
+- **Artigo:** https://www.linkedin.com/pulse/fiz-um-modelo-acertar-88-em-dados-sem-padr%C3%A3o-nenhum-artur-gomes-iu5re/
 
 ## A pergunta
 
@@ -21,7 +22,7 @@ puro ruído, então qualquer nota acima de ~50% é ilusão.
 - **Errado:** seleciona as colunas com todos os dados, depois valida
 - **Certo:** a seleção acontece dentro de cada rodada da validação cruzada
   (5 folds), usando um `Pipeline`
-- 50 repetições com sementes diferentes
+- 50 repetições com sementes diferentes (0 a 49)
 
 ## Resultados
 
@@ -33,21 +34,77 @@ puro ruído, então qualquer nota acima de ~50% é ilusão.
 Nas 50 repetições, a pior nota com vazamento (82%) superou a melhor nota
 sem vazamento (64%).
 
+## Formato dos resultados
+
+O experimento grava `site/resultados.json`:
+
+```jsonc
+{
+  "configuracao": {
+    "amostras": 100,
+    "colunas": 5000,
+    "colunas_selecionadas": 20,
+    "folds": 5,
+    "repeticoes": 50
+  },
+  "com_vazamento": {
+    "notas": [ /* 50 valores */ ],
+    "media": 0.8804,
+    "minimo": 0.82,
+    "maximo": 0.92,
+    "desvio": 0.0285
+  },
+  "sem_vazamento": {
+    "notas": [ /* 50 valores */ ],
+    "media": 0.5068,
+    "minimo": 0.39,
+    "maximo": 0.64,
+    "desvio": 0.0591
+  }
+}
+```
+
 ## Como rodar
+
+Testado com Python 3.13.
+
+**Windows (PowerShell)**
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+```
+
+**Linux / macOS**
 
 ```bash
 python -m venv .venv
-.venv\Scripts\Activate.ps1        # Windows (PowerShell)
-# source .venv/bin/activate       # Linux/macOS
+source .venv/bin/activate
 python -m pip install -r requirements.txt
-
-python src/experimento.py         # gera site/resultados.json
-python -m pytest                  # roda os testes
-cd site && python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Abra http://localhost:8000. A página lê um arquivo JSON, então precisa ser
-aberta por um servidor local (abrir o `index.html` com dois cliques não funciona).
+Depois, em qualquer sistema:
+
+```bash
+python src/experimento.py   # gera site/resultados.json
+python -m pytest            # roda os testes
+```
+
+## Reproduzir o gráfico
+
+A página lê o `resultados.json`, então precisa ser aberta por um servidor
+local (abrir o `index.html` com dois cliques não funciona):
+
+```bash
+cd site
+python -m http.server 8000 --bind 127.0.0.1
+```
+
+Abra http://localhost:8000. O gráfico é desenhado em SVG por `site/app.js`.
+As sementes são fixas, então, com as versões do `requirements.txt`, os
+resultados devem se repetir; versões diferentes de NumPy ou scikit-learn
+podem causar pequenas variações numéricas.
 
 ## Testes
 
@@ -74,4 +131,4 @@ site/                 página (HTML, CSS, JavaScript)
 
 ## Autor
 
-Artur Gomes · [www.linkedin.com/in/artur-gomes-a2712a229]
+Artur Gomes · [LinkedIn](https://www.linkedin.com/in/artur-gomes-a2712a229/)
