@@ -132,3 +132,7 @@ site/                 página (HTML, CSS, JavaScript)
 ## Autor
 
 Artur Gomes · [LinkedIn](https://www.linkedin.com/in/artur-gomes-a2712a229/)
+
+Verificado: reexecutar `python src/experimento.py` no mesmo ambiente
+(Python 3.13, NumPy 2.5.4, scikit-learn 1.9.1) produz exatamente os mesmos
+números do `resultados.json`.
